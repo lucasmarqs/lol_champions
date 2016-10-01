@@ -1,7 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (9.0.6)
     diff-lcs (1.2.5)
+    dotenv (2.1.1)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -32,6 +34,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
+  dotenv
   rack
   rack-test
   rack-unreloader

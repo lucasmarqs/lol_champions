@@ -1,9 +1,5 @@
 require 'bundler/setup'
-Bundler.require :default
 
-Unreloader = Rack::Unreloader.new { LolChampions }
+require_relative "environments/#{ENV['RACK_ENV']}"
 
-Unreloader.require './lol_champions.rb'
-Unreloader.require './models.rb'
-
-run Unreloader
+run App

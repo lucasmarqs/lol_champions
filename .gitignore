@@ -1,2 +1,4 @@
+.env
 /.bundle
 .ruby-version
+.byebug_history
