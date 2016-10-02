@@ -8,6 +8,9 @@ gem 'rake'
 gem 'tilt'
 gem 'slim'
 
+gem 'sequel'
+gem 'sqlite3'
+
 group :development, :test do
   gem 'rack-unreloader', require: 'rack/unreloader'
   gem 'dotenv'

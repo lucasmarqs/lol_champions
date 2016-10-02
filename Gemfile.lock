@@ -24,9 +24,11 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    sequel (4.39.0)
     slim (3.0.7)
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
+    sqlite3 (1.3.11)
     temple (0.7.7)
     tilt (2.0.5)
 
@@ -42,7 +44,9 @@ DEPENDENCIES
   rake
   roda
   rspec (~> 3.5)
+  sequel
   slim
+  sqlite3
   tilt
 
 RUBY VERSION
