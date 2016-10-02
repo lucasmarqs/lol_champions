@@ -16,10 +16,10 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'bundler/setup'
-require 'rack/test'
-Bundler.require :default
+ENV['RACK_ENV'] = 'test'
 
+require 'bundler/setup'
+require File.expand_path '../../environments/test', __FILE__
 require File.expand_path '../../lol_champions', __FILE__
 
 RSpec.configure do |config|
@@ -106,4 +106,8 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.around :each do |example|
+    DB.transaction(rollback: :always, savepoint: true, auto_savepoint: true) { example.run }
+  end
 end
