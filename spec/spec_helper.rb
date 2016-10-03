@@ -21,6 +21,8 @@ ENV['RACK_ENV'] = 'test'
 require 'bundler/setup'
 require File.expand_path '../../environments/test', __FILE__
 require File.expand_path '../../lol_champions', __FILE__
+require File.expand_path('../../models', __FILE__)
+
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

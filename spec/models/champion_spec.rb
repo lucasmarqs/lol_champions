@@ -1,5 +1,3 @@
-require File.expand_path('../../../models', __FILE__)
-
 RSpec.describe Champion do
   let(:default_attributes) do
     { name: "Champion", title: "a kigth fighter", lore: "Lorem ipsum...", riot_id: 236  }
