@@ -11,6 +11,8 @@ gem 'slim'
 gem 'sequel'
 gem 'sqlite3'
 
+gem 'httparty'
+
 group :development, :test do
   gem 'rack-unreloader', require: 'rack/unreloader'
   gem 'dotenv'
