@@ -6,4 +6,4 @@ module Sequel::Model::ClassMethods
   end
 end
 
-require_relative "models/champion"
+Dir["#{__dir__}/models/*.rb"].each { |file| require file }
