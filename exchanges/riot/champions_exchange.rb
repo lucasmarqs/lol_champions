@@ -5,15 +5,16 @@ module Riot
   class ChampionsExchange < RiotExchange
 
     API = "/api/lol/static-data/br/v1.2/champion"
-    PERMITTED_ATTRIBUTES = %w[name title lore riot_id].freeze
+    PERMITTED_ATTRIBUTES = %w[name title lore riot_id full_image].freeze
 
     def initialize
-      @options = { champData: 'lore' }
+      @options = { champData: 'lore,image' }
     end
 
     def champions
       @champions ||= fetch_data["data"].map do |_, champion|
         champion["riot_id"] = champion.delete 'id'
+        champion["full_image"] = champion["image"].delete 'full'
 
         Champion.find_or_initialize_by(riot_id: champion["riot_id"]) do |_champion|
           _champion.set_only(build_champion_attributes(champion), *PERMITTED_ATTRIBUTES)

@@ -11,14 +11,20 @@ RSpec.describe Riot::ChampionsExchange do
           "title": "a Espada Darkin",
           "name": "Aatrox",
           "key": "Aatrox",
-          "lore": "Aatrox é um guerreiro lendário, um dos cinco restantes de uma raça antiga..."
+          "lore": "Aatrox é um guerreiro lendário, um dos cinco restantes de uma raça antiga...",
+          "image": {
+            "full": "Aatrox.png"
+          },
         },
         "Thresh": {
           "id": 412,
           "title": "o Guardião das Correntes",
           "name": "Thresh",
           "key": "Thresh",
-          "lore": "''A mente é algo maravilhoso de se destruir.''<br><br>Sádico e astuto, Thresh..."
+          "lore": "''A mente é algo maravilhoso de se destruir.''<br><br>Sádico e astuto, Thresh...",
+          "image": {
+            "full": "Thresh.png"
+          },
         },
       }
     }.to_json
@@ -41,6 +47,11 @@ RSpec.describe Riot::ChampionsExchange do
         expect(champions).to contain_exactly(
           an_instance_of(Champion), an_instance_of(Champion)
         )
+      end
+
+      it 'fills Champion full_image' do
+        images = champions.map &:full_image
+        expect(images).to match_array %w[Aatrox.png Thresh.png]
       end
     end
 
