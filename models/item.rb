@@ -1,6 +1,8 @@
 class Item < Sequel::Model
   include ApplicationRecord
 
+  one_to_many :recommended_items
+
   def validate
     super
 

@@ -1,5 +1,9 @@
 class Champion < Sequel::Model
   include ApplicationRecord
+  plugin :many_through_many
+
+  one_to_many :recommended_items
+  many_through_many :items, [[:recommended_items, :champion_id, :item_id]]
 
   def validate
     super

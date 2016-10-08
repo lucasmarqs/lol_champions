@@ -57,4 +57,17 @@ RSpec.describe Champion do
       expect(champin_dup.valid?).to eq false
     end
   end
+
+  describe 'associations' do
+    let!(:champion) { Champion.create default_attributes }
+
+    it 'should has many recommended_items' do
+      expect(RecommendedItem.db_schema[:champion_id]).not_to be_nil
+      expect(champion.respond_to?(:recommended_items)).to eq true
+    end
+
+    it 'should has many items through recommended_items' do
+      expect(champion.respond_to?(:items)).to eq true
+    end
+  end
 end

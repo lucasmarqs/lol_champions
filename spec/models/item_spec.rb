@@ -30,4 +30,13 @@ RSpec.describe Item do
       expect(item_dup.valid?).to eq false
     end
   end
+
+  describe 'associations' do
+    let!(:item) { Item.create default_attributes }
+
+    it 'should has many recommended_items' do
+      expect(RecommendedItem.db_schema[:item_id]).not_to be_nil
+      expect(item.respond_to?(:recommended_items)).to eq true
+    end
+  end
 end

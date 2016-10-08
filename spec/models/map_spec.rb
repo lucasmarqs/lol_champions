@@ -25,4 +25,13 @@ RSpec.describe Map do
       expect(map_dup.valid?).to eq false
     end
   end
+
+  describe 'associations' do
+    let!(:map) { Map.create default_attributes }
+
+    it 'should has many recommended_items' do
+      expect(RecommendedItem.db_schema[:map_id]).not_to be_nil
+      expect(map.respond_to?(:recommended_items)).to eq true
+    end
+  end
 end
