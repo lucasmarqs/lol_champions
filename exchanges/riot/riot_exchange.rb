@@ -21,7 +21,7 @@ module Riot
     private
 
     def fetch_data
-      @parsed_response ||= self.class.get(API, @options).parsed_response
+      @parsed_response ||= self.class.get(api, @options).parsed_response
     end
   end
 end

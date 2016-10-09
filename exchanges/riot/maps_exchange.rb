@@ -3,7 +3,6 @@ require_relative 'riot_exchange'
 
 module Riot
   class MapsExchange < RiotExchange
-    API = "/api/lol/static-data/br/v1.2/map"
     PERMITTED_ATTRIBUTES = %w[name full_image riot_id].freeze
 
     def initialize
@@ -26,6 +25,12 @@ module Riot
       Map.db.transaction do
         maps.each &:save
       end
+    end
+
+    protected
+
+    def api
+      "/api/lol/static-data/br/v1.2/map"
     end
   end
 end

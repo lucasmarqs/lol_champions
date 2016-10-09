@@ -3,11 +3,10 @@ require_relative 'riot_exchange'
 
 module Riot
   class ChampionsExchange < RiotExchange
-    API = "/api/lol/static-data/br/v1.2/champion"
     PERMITTED_ATTRIBUTES = %w[name title lore riot_id full_image].freeze
 
     def initialize
-      @options = { champData: 'lore,image' }
+      @options = { query: { champData: 'lore,image' } }
     end
 
     def champions
@@ -25,6 +24,12 @@ module Riot
       Champion.db.transaction do
         champions.each &:save
       end
+    end
+
+    protected
+
+    def api
+      "/api/lol/static-data/br/v1.2/champion"
     end
   end
 end
