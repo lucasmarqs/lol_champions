@@ -1,23 +1,38 @@
 require_relative '../../../exchanges/riot/items_exchange'
 
 RSpec.describe Riot::ItemsExchange do
-  let!(:items_exchange) { Riot::ItemsExchange.new(riot_id) }
+  let!(:items_exchange) { Riot::ItemsExchange.new }
 
   let(:api_data) do
     {
-      "id": 1055,
-      "description": "<stats>+8 de Dano de Ataque<br>+80 de Vida<br>+3% de Roubo de Vida<\/stats>",
-      "name": "Lâmina de Doran",
-      "image": {
-        "full": "1055.png",
+      "data": {
+        "2009": {
+          "id": 2009,
+          "description": "<consumable>Clique para Consumir:<\/consumable> Restaura 80 de Vida e 50 de Mana ao longo de 10 segundos.",
+          "name": "Biscoito do Rejuvenescimento Total",
+          "image": {
+            "full": "2009.png"
+          }
+        },
+        "3089": {
+          "id": 3089,
+          "description": "<stats>+120 de Poder de Habilidade  <\/stats><br><br><unique>Passivo ÚNICO:<\/unique> Aumenta o Poder de Habilidade em 35%.",
+          "name": "Capuz da Morte de Rabadon",
+          "image": {
+            "full": "3089.png"
+          }
+        }
       }
     }.to_json
   end
 
-  describe '#item' do
-    let(:riot_id) { 1055 }
+  let!(:item) do
+    data = JSON.parse(api_data)["data"]["2009"]
+    Item.new name: data["name"], description: data["description"], riot_id: data["id"]
+  end
 
-    subject(:item) { items_exchange.item }
+  describe '#items' do
+    subject(:items) { items_exchange.items }
 
     before do
       allow(items_exchange).to receive(:fetch_data).and_return(JSON.parse(api_data))
@@ -25,38 +40,45 @@ RSpec.describe Riot::ItemsExchange do
 
     context 'without data collection' do
       it 'initializes an instance of Item' do
-        expect(item).to be_an_instance_of Item
+        is_expected.to contain_exactly(
+          an_instance_of(Item), an_instance_of(Item)
+        )
       end
 
       it 'correctly fills attributes' do
-        expect(item.full_image).to eq '1055.png'
-        expect(item.riot_id).to eq 1055
-        expect(item.id).to be_nil
+        expect(items.map(&:full_image)).to match_array ['2009.png', '3089.png']
+        expect(items.map(&:riot_id)).to match_array [2009, 3089]
+        expect(items.map(&:id)).to match_array [nil, nil]
       end
     end
 
     context 'with data collection' do
-      before do
-        data = JSON.parse(api_data)
-
-        Item.create name: data["name"], description: data["description"], riot_id: data["id"]
-      end
+      before { item.save }
 
       it 'initializes a persisted Item' do
-        expect(item.new?).to eq false
+        ids = items.map &:id
+        expect(ids).to match_array [nil, item.id]
       end
     end
   end
 
   describe '#save' do
-    let(:riot_id) { 1055 }
-
     before do
       allow(items_exchange).to receive(:fetch_data).and_return(JSON.parse(api_data))
     end
 
-    it 'creates a new Item' do
-      expect { items_exchange.save }.to change(Item, :count).by 1
+    context 'whitout Item data' do
+      it 'creates a new register per Item' do
+        expect { items_exchange.save }.to change(Item, :count).to 2
+      end
+    end
+
+    context 'with Item data' do
+      before { item.save }
+
+      it 'handles with already persisted Item with riot_id' do
+        expect { items_exchange.save }.to change(Item, :count).by 1
+      end
     end
   end
 end
