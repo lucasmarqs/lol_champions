@@ -17,10 +17,7 @@ RSpec.describe Riot::ItemsExchange do
         "3089": {
           "id": 3089,
           "description": "<stats>+120 de Poder de Habilidade  <\/stats><br><br><unique>Passivo ÚNICO:<\/unique> Aumenta o Poder de Habilidade em 35%.",
-          "name": "Capuz da Morte de Rabadon",
-          "image": {
-            "full": "3089.png"
-          }
+          "name": "Capuz da Morte de Rabadon"
         }
       }
     }.to_json
@@ -46,7 +43,7 @@ RSpec.describe Riot::ItemsExchange do
       end
 
       it 'correctly fills attributes' do
-        expect(items.map(&:full_image)).to match_array ['2009.png', '3089.png']
+        expect(items.map(&:full_image)).to match_array ['2009.png', nil]
         expect(items.map(&:riot_id)).to match_array [2009, 3089]
         expect(items.map(&:id)).to match_array [nil, nil]
       end

@@ -12,7 +12,7 @@ module Riot
     def items
       @items ||= data.map do |_, item|
         item["riot_id"] = item.delete 'id'
-        item["full_image"] = item["image"].delete 'full'
+        item["full_image"] = item.fetch("image", {}).delete 'full'
 
         Item.find_or_initialize_by(riot_id: item["riot_id"]) do |_item|
           _item.set_only(build_attributes(item), *PERMITTED_ATTRIBUTES)
