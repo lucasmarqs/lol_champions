@@ -1,5 +1,3 @@
-require_relative '../../../exchanges/riot/maps_exchange'
-
 RSpec.describe Riot::MapsExchange do
   let!(:maps_exchange) { Riot::MapsExchange.new }
 

@@ -1,8 +1,6 @@
 #frozen_string_literal: true
-require_relative 'riot_exchange'
-
 module Riot
-  class ChampionsExchange < RiotExchange
+  class ChampionsExchange < ::RiotExchange
     PERMITTED_ATTRIBUTES = %w[name title lore riot_id full_image].freeze
 
     def initialize

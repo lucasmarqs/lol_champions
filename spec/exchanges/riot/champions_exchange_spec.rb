@@ -1,5 +1,3 @@
-require_relative '../../../exchanges/riot/champions_exchange'
-
 RSpec.describe Riot::ChampionsExchange do
   let!(:champions_exchange) { Riot::ChampionsExchange.new }
 

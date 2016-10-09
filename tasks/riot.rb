@@ -1,5 +1,3 @@
-Dir['./exchanges/**/*.rb'].each { |file| require file }
-
 task :seed_champions do
   Riot::ChampionsExchange.new.save
 end

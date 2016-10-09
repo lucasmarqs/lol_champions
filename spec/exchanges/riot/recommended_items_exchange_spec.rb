@@ -1,5 +1,3 @@
-require_relative '../../../exchanges/riot/recommended_items_exchange'
-
 RSpec.describe Riot::RecommendedItemsExchange do
   let(:recommended_exchange) { Riot::RecommendedItemsExchange.new(champion_or_riot_id) }
 

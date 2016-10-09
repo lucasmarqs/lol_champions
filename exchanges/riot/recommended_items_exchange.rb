@@ -1,8 +1,6 @@
 #frozen_string_literal: true
-require_relative 'riot_exchange'
-
 module Riot
-  class RecommendedItemsExchange < RiotExchange
+  class RecommendedItemsExchange < ::RiotExchange
     attr_reader :champion
 
     def initialize(champion_or_riot_id)

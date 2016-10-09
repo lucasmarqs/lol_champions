@@ -22,6 +22,7 @@ require 'bundler/setup'
 require File.expand_path '../../environments/test', __FILE__
 require File.expand_path '../../lol_champions', __FILE__
 require File.expand_path('../../models', __FILE__)
+require File.expand_path('../../exchanges', __FILE__)
 
 require 'support/factory_girl'
 

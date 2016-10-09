@@ -1,8 +1,6 @@
 #frozen_string_literal: true
-require_relative 'riot_exchange'
-
 module Riot
-  class MapsExchange < RiotExchange
+  class MapsExchange < ::RiotExchange
     PERMITTED_ATTRIBUTES = %w[name full_image riot_id].freeze
 
     def initialize
