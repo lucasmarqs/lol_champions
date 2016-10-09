@@ -34,4 +34,26 @@ RSpec.describe Map do
       expect(map.respond_to?(:recommended_items)).to eq true
     end
   end
+
+  describe '#before_validation' do
+    context 'building abbreviation from name attribute' do
+      subject { map.abbreviation }
+
+      context 'given a new record' do
+        let!(:map) { Map.create default_attributes }
+
+        it { is_expected.to eq 'SR' }
+      end
+
+      context 'updating an attribute' do
+        let!(:map) { Map.create default_attributes }
+
+        context 'updating name' do
+          before { map.update(name: 'NewTwistedTreeline') }
+
+          it { is_expected.to eq 'NTT' }
+        end
+      end
+    end
+  end
 end
