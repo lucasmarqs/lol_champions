@@ -28,7 +28,7 @@ RSpec.describe Riot::ItemsExchange do
 
   let!(:item) do
     data = JSON.parse(api_data)["data"]["2009"]
-    Item.new name: data["name"], description: data["description"], riot_id: data["id"]
+    build :item, name: data["name"], description: data["description"], riot_id: data["id"]
   end
 
   describe '#items' do

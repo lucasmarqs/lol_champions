@@ -26,7 +26,7 @@ RSpec.describe Riot::MapsExchange do
 
   let(:map) do
     data = JSON.parse(api_data)["data"]["1"]
-    Map.new name: data["mapName"], full_image: data["image"]["full"], riot_id: data["mapId"]
+    build :map, name: data["mapName"], full_image: data["image"]["full"], riot_id: data["mapId"]
   end
 
   describe '#maps' do

@@ -1,11 +1,7 @@
 RSpec.describe Champion do
-  let(:default_attributes) do
-    { name: "Champion", title: "a kigth fighter", lore: "Lorem ipsum...", riot_id: 236  }
-  end
-
   describe 'hooks' do
     context 'before_create' do
-      let(:champion) { Champion.new(default_attributes.merge(created_at: nil, updated_at: nil)) }
+      let(:champion) { build :champion, created_at: nil, updated_at: nil }
 
       before { champion.save }
 
@@ -16,7 +12,7 @@ RSpec.describe Champion do
     end
 
     context 'before_update' do
-      let!(:champion) { Champion.create default_attributes }
+      let!(:champion) { create :champion }
 
       it 'updates timestamps' do
         expect { champion.update name: "New Champion" }.to change(champion, :updated_at)
@@ -25,9 +21,7 @@ RSpec.describe Champion do
   end
 
   describe 'validating attributes' do
-    subject(:champion) do
-      Champion.new default_attributes
-    end
+    subject(:champion) { build :champion, riot_id: 266 }
 
     it 'validates presence of name' do
       champion.name = nil
@@ -51,15 +45,14 @@ RSpec.describe Champion do
 
     it 'validates uniqueness of riot_id' do
       champion.save
-      champin_dup = Champion.new name: "Champion", title: "a kigth fighter",
-                      lore: "Lorem ipsum...", riot_id: 236
+      champin_dup = build :champion, riot_id: 266
 
       expect(champin_dup.valid?).to eq false
     end
   end
 
   describe 'associations' do
-    let!(:champion) { Champion.create default_attributes }
+    let!(:champion) { create :champion }
 
     it 'should has many recommended_items' do
       expect(RecommendedItem.db_schema[:champion_id]).not_to be_nil

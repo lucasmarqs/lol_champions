@@ -21,4 +21,7 @@ group :development, :test do
 
   gem 'rspec', '~>3.5'
   gem 'rack-test', require: 'rack/test'
+
+  gem 'faker'
+  gem 'factory_girl'
 end

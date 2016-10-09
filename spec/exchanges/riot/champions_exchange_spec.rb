@@ -32,7 +32,7 @@ RSpec.describe Riot::ChampionsExchange do
 
   let(:champion) do
     data = JSON.parse(api_data)["data"]["Aatrox"]
-    Champion.new name: data["name"], title: data["title"], lore: data["lore"], riot_id: data["id"]
+    build :champion, name: data["name"], title: data["title"], lore: data["lore"], riot_id: data["id"]
   end
 
   describe '#champions' do

@@ -1,15 +1,9 @@
 RSpec.describe RecommendedItem do
-  let!(:champion) { Champion.create name: 'champion', title: 'title', lore: 'lore', riot_id: 266 }
-  let!(:item) { Item.create name: 'Item', description: 'description', riot_id: 3044  }
-  let!(:map) { Map.create name: 'Map', riot_id: 1 }
+  let!(:champion) { create :champion }
+  let!(:item) { create :item }
+  let!(:map) { create :map }
 
-  let(:default_attributes) do
-    { champion_id: champion.id, map_id: map.id, item_id: item.id }
-  end
-
-  let(:recommended_item) do
-    RecommendedItem.new default_attributes
-  end
+  let(:recommended_item) { build :recommended, champion: champion, item: item, map: map }
 
   describe 'validating attributes' do
     subject { recommended_item.valid? }
@@ -31,7 +25,7 @@ RSpec.describe RecommendedItem do
 
     it 'validates uniqueness of [:champion_id, :map_id, :item_id]' do
       recommended_item.save
-      item_dup = RecommendedItem.new default_attributes
+      item_dup = build :recommended, champion: champion, item: item, map: map
 
       expect(item_dup.valid?).to eq false
     end

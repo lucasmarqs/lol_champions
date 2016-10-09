@@ -23,6 +23,7 @@ require File.expand_path '../../environments/test', __FILE__
 require File.expand_path '../../lol_champions', __FILE__
 require File.expand_path('../../models', __FILE__)
 
+require 'support/factory_girl'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
