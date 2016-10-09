@@ -38,7 +38,7 @@ module Riot
 
     def save
       RecommendedItem.db.transaction do
-        recommended_items.each &:save
+        recommended_items.each { |recommended| recommended.save if recommended.valid? }
       end
     end
 
