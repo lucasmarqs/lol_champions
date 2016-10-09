@@ -6,7 +6,7 @@ class Item < Sequel::Model
   def validate
     super
 
-    validates_presence %i[name description riot_id]
+    validates_presence %i[riot_id]
     validates_unique [:riot_id]
   end
 end

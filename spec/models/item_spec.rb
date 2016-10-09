@@ -4,16 +4,6 @@ RSpec.describe Item do
 
     subject { item.valid? }
 
-    it 'validates presence of name' do
-      item.name = nil
-      is_expected.to eq false
-    end
-
-    it 'validates presence of description' do
-      item.description = nil
-      is_expected.to eq false
-    end
-
     it 'validates presence of riot_id' do
       item.riot_id = nil
       is_expected.to eq false
