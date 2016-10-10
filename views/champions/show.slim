@@ -1,21 +1,39 @@
+#champions-show
+
 .row
   .columns
     h1 = "#{@champion.name}, #{@champion.title}"
 
 .row
   .columns
-    h2 Summoner's Rift
+    nav aria-label="Você está aqui:" role="navigation"
+      ul.breadcrumbs
+        li
+          a href="/" Lista de Campeões
+        li Items Recomendados
 
-== render 'champions/_items', locals: { recommended_items: @sr_recommendeds }
+section#items-index
+  .row
+    .medium-6.columns
+      .row
+        .columns
+          h2 Summoner's Rift
 
-.row
-  .columns
-    h2 Twisted Treeline
+      .row
+        .columns
+          == render 'champions/_items', locals: { recommended_items: @sr_recommendeds }
 
-== render 'champions/_items', locals: { recommended_items: @tt_recommendeds }
+      .row
+        .columns
+          h2 Twisted Treeline
 
-.row
-  .columns
-    h2 Howling Abyss
+      == render 'champions/_items', locals: { recommended_items: @tt_recommendeds }
 
-== render 'champions/_items', locals: { recommended_items: @ha_recommendeds }
+      .row
+        .columns
+          h2 Howling Abyss
+
+      == render 'champions/_items', locals: { recommended_items: @ha_recommendeds }
+
+    .medium-6.columns
+      #items-show

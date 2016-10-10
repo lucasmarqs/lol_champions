@@ -1,6 +1,6 @@
 class LolChampions < Roda
   plugin :render, engine: 'slim'
-  plugin :assets, css: 'main.scss'
+  plugin :assets, css: 'main.scss', js: 'main.js'
 
   route do |r|
     r.assets
@@ -19,6 +19,12 @@ class LolChampions < Roda
       @ha_recommendeds = RecommendedItem.ha.where(champion: @champion)
 
       view 'champions/show'
+    end
+
+    r.on 'items/:item_id' do |item_id|
+      @item = Item.find id: item_id
+
+      render 'items/show'
     end
   end
 end

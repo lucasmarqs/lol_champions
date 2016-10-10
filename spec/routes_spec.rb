@@ -22,4 +22,13 @@ RSpec.describe "Accessing app's root path" do
       expect(last_response).to be_ok
     end
   end
+
+  context 'on items/:item_id' do
+    let!(:item) { create :item }
+
+    it 'responds ok' do
+      get "/items/#{item.id}"
+      expect(last_response).to be_ok
+    end
+  end
 end

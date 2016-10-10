@@ -1,7 +1,8 @@
 - recommended_items.each_slice(7) do |slice|
   .row
-    .medium-6.columns
-      ul.menu
+    .medium-12.columns
+      ul.items.menu
         - slice.each do |recommended|
           li
-            img src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/item/#{recommended.item_full_image}"
+            a class="item" href="/items/#{recommended.item_id}"
+              img src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/item/#{recommended.item_full_image}"

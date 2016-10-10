@@ -1,4 +1,18 @@
+body {
+  margin: 12px 0;
+}
+
 img.has-tip {
   border-bottom: none;
   cursor: inherit;
+}
+
+ul.items.menu {
+  li > a {
+    padding: 0;
+
+    img {
+      margin-right: 0;
+    }
+  }
 }
