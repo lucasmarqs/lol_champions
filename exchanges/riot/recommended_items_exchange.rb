@@ -18,8 +18,7 @@ module Riot
       return @recommended_items unless @recommended_items.empty?
 
       data.each do |recommended|
-        map = Map.find abbreviation: recommended["map"]
-        next if map.nil?
+        map = recommended["map"]
 
         recommended["blocks"].each do |block|
           block["items"].each do |item|

@@ -37,7 +37,6 @@ RSpec.describe Riot::RecommendedItemsExchange do
   let(:champion_or_riot_id) { champion }
 
   let!(:champion) { create :champion, riot_id: 266 }
-  let!(:map) { create :map, name: 'CrystalScar', riot_id: 8 }
   let!(:item_1055) { create :item, riot_id: 1055 }
   let!(:item_2003) { create :item, riot_id: 2003 }
 

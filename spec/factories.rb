@@ -23,6 +23,7 @@ FactoryGirl.define do
   factory :recommended_item, aliases: [:recommended] do
     champion
     item
-    map
+
+    map { %w[SR HA TT].sample }
   end
 end
