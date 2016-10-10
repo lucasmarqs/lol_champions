@@ -4,9 +4,14 @@
 
 ## Setup
 
+You must have a [Riot Development API Key ](https://developer.riotgames.com) before setup the application.
+
 ```
 # Install all dependecies
 bundle install
+
+# Create .env file
+bundle exec rake setup\[RIOT_ID\]
 
 # Setup database
 bundle exec rake db:migrate
