@@ -4,7 +4,7 @@ module Riot
     PERMITTED_ATTRIBUTES = %w[name description full_image riot_id].freeze
 
     def initialize
-      @options = { query: { itemData: 'image' } }
+      @options = { query: { itemListData: 'image' } }
     end
 
     def items
