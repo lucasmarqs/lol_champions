@@ -3,3 +3,4 @@
 .ruby-version
 .byebug_history
 /db/*.db
+.sass-cache

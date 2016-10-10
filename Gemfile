@@ -7,6 +7,7 @@ gem 'roda'
 gem 'rake'
 gem 'tilt'
 gem 'slim'
+gem 'sass'
 
 gem 'sequel'
 gem 'sqlite3'

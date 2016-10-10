@@ -39,6 +39,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    sass (3.4.22)
     sequel (4.39.0)
     slim (3.0.7)
       temple (~> 0.7.6)
@@ -65,6 +66,7 @@ DEPENDENCIES
   rake
   roda
   rspec (~> 3.5)
+  sass
   sequel
   slim
   sqlite3
