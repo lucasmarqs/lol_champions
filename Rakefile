@@ -12,7 +12,7 @@ task :setup, [:riot_key] do |t, args|
   end
 
   File.write '.env', <<~TXT
-    RIOT_ID="#{args[:riot_key]}"
+    RIOT_KEY="#{args[:riot_key]}"
     DEVELOPMENT.DATABASE_URL="db/development.db"
     TEST.DATABASE_URL="db/test.db"
   TXT
