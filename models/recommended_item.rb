@@ -11,6 +11,18 @@ class RecommendedItem < Sequel::Model
     validates_unique %i[champion_id item_id]
   end
 
+  def item_name
+    item.name
+  end
+
+  def item_full_image
+    item.full_image
+  end
+
+  def item_description
+    item.description
+  end
+
   # Define scope for Summoner's Rift, Howling Abyss and Twisted Treeline maps
   class << self
     %w[SR HA TT].each do |abbr|

@@ -3,7 +3,16 @@ html
   head
     meta charset='utf-8'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
-    title LOL Champions
+    title Os campeões de League of Legend
+    link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.3/foundation.min.css"
+    == assets :css
   
   body
-    == yield
+    .container
+      == yield
+
+    script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"
+    script src="https://cdn.jsdelivr.net/foundation/6.2.3/foundation.min.js"
+
+    javascript:
+      $(document).foundation();

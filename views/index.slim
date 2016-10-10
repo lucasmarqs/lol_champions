@@ -1,1 +1,14 @@
-h1 LoL Champions
+.row
+  .columns
+    h1 Lista de Campeões
+
+- @champions.each_slice(7) do |slice|
+  .row
+    .columns
+      ul.menu
+        - slice.each do |champion|
+          li
+            a href="/champions/#{champion.id}"
+              img[src="http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/#{champion.full_image}"
+                data-tooltip aria-haspopup="true" class="has-tip top"
+                data-disable-hover="false" tabindex="-1" title=champion.name]

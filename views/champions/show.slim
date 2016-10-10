@@ -1,0 +1,21 @@
+.row
+  .columns
+    h1 = "#{@champion.name}, #{@champion.title}"
+
+.row
+  .columns
+    h2 Summoner's Rift
+
+== render 'champions/_items', locals: { recommended_items: @sr_recommendeds }
+
+.row
+  .columns
+    h2 Twisted Treeline
+
+== render 'champions/_items', locals: { recommended_items: @tt_recommendeds }
+
+.row
+  .columns
+    h2 Howling Abyss
+
+== render 'champions/_items', locals: { recommended_items: @ha_recommendeds }

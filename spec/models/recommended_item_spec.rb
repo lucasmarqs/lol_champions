@@ -75,4 +75,18 @@ RSpec.describe RecommendedItem do
 
     it { is_expected.to match_array [recommended_tt] }
   end
+
+  context 'delegations' do
+    it 'should delegates #item_name to item' do
+      expect(recommended_item.item_name).to eq item.name
+    end
+
+    it 'should delegates #item_full_image to item' do
+      expect(recommended_item.item_full_image).to eq item.full_image
+    end
+
+    it 'should delegates #item_description to item' do
+      expect(recommended_item.item_description).to eq item.description
+    end
+  end
 end
