@@ -3,7 +3,7 @@ class LolChampions < Roda
   plugin :assets, css: 'main.scss', js: 'main.js'
 
   route do |r|
-    r.assets
+    r.assets unless ENV['RACK_ENV'] == 'production'
 
     r.root do
       @champions = Champion.all

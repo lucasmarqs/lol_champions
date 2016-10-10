@@ -14,8 +14,14 @@ task :setup, [:riot_key] do |t, args|
   File.write '.env', <<~TXT
     RIOT_ID="#{args[:riot_key]}"
     DEVELOPMENT.DATABASE_URL="db/development.db"
-    TEXT.DATABASE_URL="db/test.db"
+    TEST.DATABASE_URL="db/test.db"
   TXT
+end
+
+namespace :assets do
+  task :precompile do
+    LolChampions.compile_assets
+  end
 end
 
 task :default do
